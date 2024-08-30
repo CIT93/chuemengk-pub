@@ -1,43 +1,30 @@
 
-function determineHouseholdPoints(numberInHousehold) 
+function determineHouseholdPoints(householdSize) 
 {
-console.log("Inside the function");
-if(numberInHousehold === 1)
+if(householdSize === "Large")
     {
-        carbonFootPrintPoints = carbonFootPrintPoints + 14;
+        carbonFootPrintPoints = carbonFootPrintPoints + 10;
     }
-    else if(numberInHousehold === 2)
+    else if(householdSize === "Medium")
         {
-            carbonFootPrintPoints = carbonFootPrintPoints + 12;
+            carbonFootPrintPoints = carbonFootPrintPoints + 7;
         }
-        else if(numberInHousehold === 3)
+        else if(householdSize === "Small")
             {
-                carbonFootPrintPoints = carbonFootPrintPoints + 10;
+                carbonFootPrintPoints = carbonFootPrintPoints + 4;
             }
-            else if(numberInHousehold === 4)
+            else if(householdSize === "Apartment")
                 {
-                    carbonFootPrintPoints = carbonFootPrintPoints + 8;
+                    carbonFootPrintPoints = carbonFootPrintPoints + 2;
                 }
-                else if(numberInHousehold === 5)
-                    {
-                        carbonFootPrintPoints = carbonFootPrintPoints + 6;
-                    }
-                    else if(numberInHousehold === 6)
-                        {
-                            carbonFootPrintPoints = carbonFootPrintPoints + 4;
-                        }
-                        else if(numberInHousehold > 6)
-                            {
-                                carbonFootPrintPoints = carbonFootPrintPoints + 2;
-                            }
-                            console.log(`Based on the number of members of the household of ${numberInHousehold} the carbon footprint would be ${carbonFootPrintPoints}.`);
+                            console.log(`Based on the size of the household which is ${householdSize} the carbon footprint would be ${carbonFootPrintPoints}.`);
 
                         }
 
 let carbonFootPrintPoints = 0;
-//const numberInHousehold = 3;
+//const householdSize;
 
 //global scope space 
 
-determineHouseholdPoints(3);
-determineHouseholdPoints(4);
+determineHouseholdPoints("Small");
+determineHouseholdPoints("Large");
