@@ -7,7 +7,7 @@ const myVarType = typeof(myVar);
 
 console.log("myVarType" + myVarType);
 
-console.log('myVarType ${myVarType}');
+console.log(`myVarType ${myVarType}`);
 
 
     function runNow()
