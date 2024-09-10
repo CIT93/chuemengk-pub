@@ -1,5 +1,4 @@
-
-
+const cfpData = [];
 function determineHouseSizePoints(householdSize){
     let houseSizePoints = 0;
     if(householdSize === "Large")
@@ -28,7 +27,7 @@ function determineHouseholdPoints(numberInHousehold) {
         {
             householdPoints = 14;
         }
-    else if(numberInHousehold === 2)
+        else if(numberInHousehold === 2)
         {
             householdPoints = 12;
         }
@@ -48,19 +47,18 @@ function determineHouseholdPoints(numberInHousehold) {
         {
             householdPoints = 4;
         }
-        else if(numberInHousehold > 6)
+        else if(numberInHousehold > 7)
         {
             householdPoints = 2;
         }
         return householdPoints;              
     }
-const cfpData = [];
 function start(householdNumbers, houseSize)
 {
-    const householdPoints = determineHouseholdPoints(householdNumbers);
-    const houseSizePoints = determineHouseSizePoints(houseSize);
-    const total = householdPoints + houseSizePoints;
-    cfpData.push(householdNumbers, houseSize, householdPoints, houseSizePoints, total);
+    const housePoints = determineHouseholdPoints(householdNumbers);
+    const sizePoints = determineHouseSizePoints(houseSize);
+    const total = housePoints + sizePoints;
+    cfpData.push([householdNumbers, houseSize, housePoints, sizePoints, total]);
 }
 
 function displayOutput()
@@ -69,32 +67,38 @@ function displayOutput()
         {
             console.log(arr);
             const output = document.getElementById("output");
+            const newH2 = document.createElement("h2");
+            newH2.textContent = `Carbon Footprint Total is ${arr[4]}`;
+            const newH3 = document.createElement("h3");
+            newH3.textContent = `Based on number in and size of home`;
             const newP = document.createElement("p");
-            /*const newP2 = document.createElement("p");
-            const newP3 = document.createElement("p");
-            const newP4 = document.createElement("p");
-            const newP5 = document.createElement("p");*/
-            newP.textContent = `Carbon Footprint Total is ${arr[4]}`;
-            /*newP2.textContent = `Number of Household Members is ${cfpData[0]}`;
-            newP3.textContent = `Score for house members is ${cfpData[2]}`;
-            newP4.textContent = `Size of the House is ${cfpData[1]}`;
-            newP5.textContent = `Score for the size of the house is ${cfpData[3]}`;*/
+            newP.textContent = `This number is based on the number of people in the house of ${arr[0]} (score: ${arr[3]} )`;
+            newP.textContent += `and a ${arr[1]} size of home (score: ${arr[2]} )`;
+            output.appendChild(newH2);
+            output.appendChild(newH3);
             output.appendChild(newP);
-            /*output.appendChild(newP2);
-            output.appendChild(newP3);
-            output.appendChild(newP4);
-            output.appendChild(newP5);*/
-            break;
+            
         }
         
 }
 
-start(3, "Large");
-start(6, "Small");
-start(2, "Medium");
-start(10, "Apartment");
+start(1, "Large");
+start(2, "Small");
+start(3, "Medium");
 start(4, "Apartment");
-start(1, "Small");
-
+start(5, "Apartment");
+start(6, "Small");
+start(7, "Large");
+start(8, "Small");
+start(9, "Medium");
+start(1, "Apartment");
+start(2, "Apartment");
+start(3, "Small");
+start(4, "Large");
+start(5, "Small");
+start(6, "Medium");
+start(7, "Apartment");
+start(8, "Apartment");
+start(9, "Small");
 
 displayOutput();
