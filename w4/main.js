@@ -60,7 +60,7 @@ function start(householdNumbers, houseSize)
     const householdPoints = determineHouseholdPoints(householdNumbers);
     const houseSizePoints = determineHouseSizePoints(houseSize);
     const total = householdPoints + houseSizePoints;
-    cfpData.push(householdNumbers, houseSize, householdPoints, houseSizePoints, total);
+    cfpData.push([householdNumbers, houseSize, householdPoints, houseSizePoints, total]);
 }
 
 function displayOutput()

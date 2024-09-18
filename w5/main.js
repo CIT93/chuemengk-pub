@@ -1,4 +1,5 @@
 const cfpData = [];
+
 function determineHouseSizePoints(householdSize){
     let houseSizePoints = 0;
     if(householdSize === "Large")
@@ -53,31 +54,53 @@ function determineHouseholdPoints(numberInHousehold) {
         }
         return householdPoints;              
     }
+/*
+function displayOutObj(object)
+{
+    console.log(object);
+    const output = document.getElementById("output");
+    const newH2 = document.createElement("h2");
+    newH2.textContent = `Carbon Footprint Total is ${object.cfpTotal}`;
+    output.appendChild(newH2);
+}*/
 function start(householdNumbers, houseSize)
 {
     const housePoints = determineHouseholdPoints(householdNumbers);
     const sizePoints = determineHouseSizePoints(houseSize);
     const total = housePoints + sizePoints;
-    cfpData.push([householdNumbers, houseSize, housePoints, sizePoints, total]);
+    /*const cfpObj = 
+    {
+        houseM: householdNumbers,
+        houseS: houseSize,
+        houseMPTS: housePoints,
+        houseSPTS: sizePoints,
+        cfpTotal: total
+    }*/
+    cfpData.push({
+        houseM: householdNumbers,
+        houseS: houseSize,
+        houseMPTS: housePoints,
+        houseSPTS: sizePoints,
+        cfpTotal: total
+    });
 }
 
 function displayOutput()
 {
-    for(arr of cfpData)
+    for(object of cfpData)
         {
-            console.log(arr);
+            console.log(object);
             const output = document.getElementById("output");
             const newH2 = document.createElement("h2");
-            newH2.textContent = `Carbon Footprint Total is ${arr[4]}`;
+            newH2.textContent = `Carbon Footprint Total is ${object.cfpTotal}`;
             const newH3 = document.createElement("h3");
             newH3.textContent = `Based on number in and size of home`;
             const newP = document.createElement("p");
-            newP.textContent = `This number is based on the number of people in the house of ${arr[0]} (score: ${arr[3]} )`;
-            newP.textContent += `and a ${arr[1]} size of home (score: ${arr[2]} )`;
+            newP.textContent = `This number is based on the number of people in the house of ${object.houseM} (score ${object.houseMPTS})`;
+            newP.textContent += ` and a ${object.houseS} size of home (score: ${object.houseSPTS})`;
             output.appendChild(newH2);
             output.appendChild(newH3);
             output.appendChild(newP);
-            
         }
         
 }
@@ -92,13 +115,4 @@ start(7, "Large");
 start(8, "Small");
 start(9, "Medium");
 start(1, "Apartment");
-start(2, "Apartment");
-start(3, "Small");
-start(4, "Large");
-start(5, "Small");
-start(6, "Medium");
-start(7, "Apartment");
-start(8, "Apartment");
-start(9, "Small");
-
 displayOutput();
