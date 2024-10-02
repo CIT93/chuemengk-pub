@@ -61,7 +61,11 @@ function start(householdNumbers, houseSize)
     const housePoints = determineHouseholdPoints(householdNumbers);
     const sizePoints = determineHouseSizePoints(houseSize);
     const total = housePoints + sizePoints;
+    const firstname = FORM.firstName.value;
+    const lastname = FORM.lastName.value;
     cfpData.push({
+        firstN: firstName,
+        lastN: lastName,
         houseM: householdNumbers,
         houseS: houseSize,
         houseMPTS: housePoints,
