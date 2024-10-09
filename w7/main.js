@@ -1,3 +1,5 @@
+import { renderTbl } from "./render.js";
+
 const FORM = document.getElementById("form"); 
 const OUTPUT = document.getElementById("output");
 const cfpData = [];
@@ -71,7 +73,7 @@ function start(first, last, householdNumbers, houseSize)
         cfpTotal: total
     });
 }
-
+/*
 function displayOutput()
 {
     for(object of cfpData)
@@ -89,9 +91,16 @@ function displayOutput()
             OUTPUT.appendChild(newP);
         }
         
-}
+}*/
+//What would you do to make this code more manageable overtime?
+//
+//Code Challenge: creating table body from html into hard code in main.js
+//I tried to create the code for the table body but I was unable to replicate the results.
 
-displayOutput();
+
+//Q: why did we get an "Uncaught ReferenceError"
+//R: because td is not defined outside its block scope
+//displayOutput();
 
 //notes for index.html :
 // using the required => you get built-in Validation, 
@@ -106,9 +115,12 @@ FORM.addEventListener('submit', function(e){
     const houseSize = FORM.houses.value;
     start(firstname, lastname, houseMembers, houseSize);
     OUTPUT.innerHTML = "";
-    displayOutput();
+    //displayOutput();
+    renderTbl(cfpData);
     FORM.reset();
 })
 
-//CHALLENGE
-//
+
+//Q: What are some questions do you have on modules?
+//R: Can I have multiple render.js modules exported to my main.js
+//  > Exporting and importing modules reminds me of header files.
