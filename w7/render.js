@@ -26,12 +26,13 @@ function renderTbl(data)
     const table = renderHeading();
     const tbody = document.createElement("tbody");
     const tr = document.createElement("tr");
-    const trTextArr = ["Chuemeng", 3, "Large", 20, "Edit", "Del"];
+    const trTextArr = [];
     trTextArr.forEach(function(text){
         const td = document.createElement("td");
         td.textContent = text;
         tr.appendChild(td);
-    })
+     });
+    
     const td = document.createElement("td");
     const btnEdit = document.createElement("button");
     const btnDel = document.createElement("button");
@@ -45,4 +46,4 @@ function renderTbl(data)
     TBL.appendChild(table);
 }
 
-export{renderTbl, renderHeading};
+export{renderTbl,renderHeading};
