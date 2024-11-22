@@ -1,4 +1,4 @@
-import { renderTbl } from "./render.js";
+import { renderTbl, deleteTableHeading } from "./render.js";
 import {determineHouseSizePoints,determineHouseholdPoints} from "./cfp.js";
 
 const FORM = document.getElementById("form"); 
